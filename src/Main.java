@@ -1,4 +1,5 @@
 import domain.Product;
+import service.CommerceSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,24 +13,7 @@ public class Main {
         products.add(new Product("MacBook Pro", 2400000L, "M3 칩셋이 탑재된 노트북", 15));
         products.add(new Product("AirPods Pro", 350000L, "노이즈 캔슬링 무선 이어폰", 50));
 
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            // 상품 목록 출력
-            System.out.println("[ 실시간 커머스 플랫폼 - 전자제품 ]");
-            for (int i = 0; i < products.size(); i++) {
-                System.out.println((i + 1) + ". " + products.get(i));
-            }
-            System.out.println("0. 종료 | 프로그램 종료");
-
-            // 입력받기
-            int input = scanner.nextInt();
-
-            // 0이면 종료
-            if (input == 0) {
-                System.out.println("커머스 플랫폼을 종료합니다.");
-                break;
-            }
-        }
+        CommerceSystem commerceSystem = new CommerceSystem(products);
+        commerceSystem.start();
     }
 }
