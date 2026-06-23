@@ -52,9 +52,10 @@ public class Product {
     // 상품명을 고정 너비로 정렬하도록 포맷팅
     @Override
     public String toString() {
-        return String.format("%-15s | %10s | %s",
+        return String.format("%-15s | %10s | %s | 재고: %d개",
                 name,
                 String.format("%,d원", price),
-                description);
+                description,
+                stock);
     }
 }
