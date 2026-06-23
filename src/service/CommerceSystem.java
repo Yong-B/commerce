@@ -25,7 +25,7 @@ public class CommerceSystem {
         try (Scanner scanner = new Scanner(System.in)){ // 특강에서 배운 try-with-resources
             while (true) {
                 printCategory();
-                int max = carts.isEmpty() ? categories.size() : 5;
+                int max = 6;
                 int input = InputHandle.inputNum(scanner, 0, max);
            
                 // 0이면 종료
@@ -37,7 +37,10 @@ public class CommerceSystem {
                 } else if (input == 5 && !carts.isEmpty()) {
                     carts.clear();
                     System.out.println("주문이 취소되었습니다.");
-                }else {  
+                } else if (input ==6) {
+                    AdminService admin = new AdminService(categories);
+                    admin.startAdmin();
+                } else {  
                     enterCategory(scanner, input);}
             }
         }
@@ -49,6 +52,7 @@ public class CommerceSystem {
             System.out.println((i + 1) + ". " + categories.get(i).getCategoryName());
         }
         System.out.println("0. 종료 | 프로그램 종료");
+        System.out.println("6. 관리자 모드");
 
         if (!carts.isEmpty()) {
             System.out.println("\n[ 주문 관리 ]");
